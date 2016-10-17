@@ -38,12 +38,12 @@ import ObjectMapper
     /// Fully qualified address of the location.
     open fileprivate(set) var address: String?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension Place: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         address <- map["address"]
     }
 }

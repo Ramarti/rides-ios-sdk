@@ -58,14 +58,14 @@ import UIKit
                 var error: NSError?
                 let success = TokenManager.saveToken(accessToken, tokenIdentifier: tokenIdentifier, accessGroup: accessGroup)
                 if !success {
-                    error = RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .unableToSaveAccessToken)
+                    error = RidesAuthenticationErrorFactory.errorForType(.unableToSaveAccessToken)
                     print("Error: access token failed to save to keychain")
                 }
                 loginCompletion?(accessToken, error)
             } catch let ridesError as NSError {
                 loginCompletion?(nil, ridesError)
             } catch {
-                loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .invalidResponse))
+                loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(.invalidResponse))
             }
             didHandleRedirect = true
         }

@@ -32,12 +32,12 @@ import ObjectMapper
 */
 struct UberProducts {
     var list: [UberProduct]?
-    init?(_ map: Map){
+    init?(map: Map){
     }
 }
 
 extension UberProducts: UberModel {
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         list <- map["products"]
     }
 }
@@ -66,12 +66,12 @@ extension UberProducts: UberModel {
     /// The basic price details. See `PriceDetails` for structure.
     open fileprivate(set) var priceDetails: PriceDetails?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension UberProduct : UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         productID    <- map["product_id"]
         name         <- map["display_name"]
         details      <- map["description"]
@@ -111,12 +111,12 @@ extension UberProduct : UberModel {
     /// Array containing additional fees added to the price. See `ServiceFee`.
     open fileprivate(set) var serviceFees: [ServiceFee]?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension PriceDetails : Mappable {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         distanceUnit    <- map["distance_unit"]
         currencyCode    <- map["currency_code"]
         costPerMinute   <- map["cost_per_minute"]
@@ -140,12 +140,12 @@ open class ServiceFee : NSObject {
     /// The amount of the service fee.
     open fileprivate(set) var fee: Double = 0.0
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension ServiceFee: Mappable {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         name <- map["name"]
         fee  <- map["fee"]
     }

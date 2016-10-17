@@ -117,7 +117,7 @@
      */
     @objc open func login(requestedScopes scopes: [RidesScope], presentingViewController: UIViewController? = nil, completion: ((_ accessToken: AccessToken?, _ error: NSError?) -> Void)? = nil) {
         guard !loggingIn else {
-            completion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .unavailable))
+            completion?(nil, RidesAuthenticationErrorFactory.errorForType(.unavailable))
             return
         }
         
@@ -126,13 +126,13 @@
         switch loginType {
         case .authorizationCode:
             guard let presentingViewController = presentingViewController else {
-                completion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .unableToPresentLogin))
+                completion?(nil, RidesAuthenticationErrorFactory.errorForType(.unableToPresentLogin))
                 return
             }
             loginAuthenticator = AuthorizationCodeGrantAuthenticator(presentingViewController: presentingViewController, scopes: scopes, state: state)
         case .implicit:
             guard let presentingViewController = presentingViewController else {
-                completion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .unableToPresentLogin))
+                completion?(nil, RidesAuthenticationErrorFactory.errorForType(.unableToPresentLogin))
                 return
             }
             loginAuthenticator = ImplicitGrantAuthenticator(presentingViewController: presentingViewController, scopes: scopes)
@@ -207,7 +207,7 @@
     
     fileprivate func handleLoginCanceled() {
         loggingIn = false
-        authenticator?.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .userCancelled))
+        authenticator?.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(.userCancelled))
         authenticator = nil
     }
     

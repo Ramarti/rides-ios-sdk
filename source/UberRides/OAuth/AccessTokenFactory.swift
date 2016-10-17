@@ -43,7 +43,7 @@ Factory class to build access tokens
      */
     static func createAccessTokenFromRedirectURL(_ url : URL) throws -> AccessToken {
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
-            throw RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .invalidResponse)
+            throw RidesAuthenticationErrorFactory.errorForType(.invalidResponse)
         }
 
         var finalQueryArray = [String]()
@@ -57,7 +57,7 @@ Factory class to build access tokens
         components.query = finalQueryArray.joined(separator: "&")
         
         guard let queryItems = components.queryItems else {
-            throw RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .invalidRequest)
+            throw RidesAuthenticationErrorFactory.errorForType(.invalidRequest)
         }
         var queryDictionary = [String : String]()
         for queryItem in queryItems {
@@ -67,8 +67,8 @@ Factory class to build access tokens
             queryDictionary[queryItem.name] = value
         }
         if let error = queryDictionary["error"] {
-            guard let error = RidesAuthenticationErrorFactory.createRidesAuthenticationError(rawValue: error) else {
-                throw RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .invalidRequest)
+            guard let error = RidesAuthenticationErrorFactory.createRidesAuthenticationError(error) else {
+                throw RidesAuthenticationErrorFactory.errorForType(.invalidRequest)
             }
             throw error
         } else {
@@ -78,11 +78,11 @@ Factory class to build access tokens
                 queryDictionary["expiration_date"] = "\(expirationDateSeconds)"
                 queryDictionary.removeValue(forKey: "expires_in")
             }
-        
-            if let token = AccessToken.init(Map.init(mappingType: .ToJSON, JSONDictionary: queryDictionary as [String : AnyObject])){
+            let map = Map(mappingType: .toJSON, JSON: queryDictionary)
+            if let token = AccessToken(map:map){
                 return token
             }
         }
-        throw RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .invalidResponse)
+        throw RidesAuthenticationErrorFactory.errorForType(.invalidResponse)
     }
 }

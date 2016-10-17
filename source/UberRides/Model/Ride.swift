@@ -1,3 +1,4 @@
+
 //
 //  Ride.swift
 //  UberRides
@@ -58,12 +59,12 @@ import ObjectMapper
     /// The object that contains vehicle details. Only non-null during an ongoing trip.
     open fileprivate(set) var vehicle: Vehicle?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension Ride: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         destination     <- map["destination"]
         driver          <- map["driver"]
         driverLocation  <- map["location"]

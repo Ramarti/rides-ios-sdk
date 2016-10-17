@@ -108,7 +108,7 @@ import WebKit
         request.prepare()
         
         guard let _ = request.requestURL() else {
-            loginAuthenticator.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType:.invalidRequest))
+            loginAuthenticator.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(.invalidRequest))
             
             return
         }
@@ -141,12 +141,12 @@ extension LoginView : WKNavigationDelegate {
     }
     
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        loginAuthenticator.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .networkError))
+        loginAuthenticator.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(.networkError))
     }
     
     public func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         if error._code != 102 {
-            loginAuthenticator.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .networkError))
+            loginAuthenticator.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(.networkError))
         }
     }
 }

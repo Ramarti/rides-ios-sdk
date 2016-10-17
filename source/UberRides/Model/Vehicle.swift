@@ -43,12 +43,12 @@ import ObjectMapper
     /// The URL to a stock photo of the vehicle (may be null).
     open fileprivate(set) var pictureURL: String?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension Vehicle: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         make         <- map["make"]
         model        <- map["model"]
         licensePlate <- map["license_plate"]

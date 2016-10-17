@@ -52,9 +52,9 @@ import Foundation
         deeplink.execute { error in
             
             if let error = error , error.code == DeeplinkErrorType.unableToFollow.rawValue {
-                self.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .invalidRequest))
+                self.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(.invalidRequest))
             } else if let _ = error {
-                self.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .unavailable))
+                self.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(.unavailable))
             }
             self.deeplinkCompletion?(error)
         }

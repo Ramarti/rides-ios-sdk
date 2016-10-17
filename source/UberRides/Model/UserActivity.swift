@@ -42,12 +42,12 @@ import ObjectMapper
     /// Array of trip information.
     open fileprivate(set) var history: [UserActivity]?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension TripHistory: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         offset  <- map["offset"]
         limit   <- map["limit"]
         count   <- map["count"]
@@ -85,12 +85,12 @@ extension TripHistory: UberModel {
     /// Unique identifier representing a specific product for a given latitude & longitude.
     open fileprivate(set) var productID: String?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension UserActivity: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         distance    <- map["distance"]
         requestTime <- (map["request_time"], DateTransform())
         startTime   <- (map["start_time"], DateTransform())
@@ -121,12 +121,12 @@ extension UserActivity: UberModel {
     /// Display name of city.
     open fileprivate(set) var name: String?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension TripCity: Mappable {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         latitude  <- map["latitude"]
         longitude <- map["longitude"]
         name      <- map["display_name"]

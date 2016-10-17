@@ -40,12 +40,12 @@ import ObjectMapper
     /// The type of the charge.
     open fileprivate(set) var type: String?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension RideCharge: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         amount <- map["amount"]
         name   <- map["name"]
         type   <- map["type"]

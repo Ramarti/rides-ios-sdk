@@ -69,7 +69,7 @@ class OAuthViewController: UIViewController {
     }
     
     func cancel() {
-        self.loginView.loginAuthenticator.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .userCancelled))
+        self.loginView.loginAuthenticator.loginCompletion?(nil, RidesAuthenticationErrorFactory.errorForType(.userCancelled))
         dismiss(animated: true, completion: nil)
     }
     

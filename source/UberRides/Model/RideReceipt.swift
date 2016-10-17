@@ -67,12 +67,12 @@ import ObjectMapper
     /// The total amount still owed after attempting to charge the user. May be 0 if amount was paid in full.
     open fileprivate(set) var totalOwed: Double = 0.0
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension RideReceipt: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         chargeAdjustments <- map["charge_adjustments"]
         charges           <- map["charges"]
         currencyCode      <- map["currency_code"]

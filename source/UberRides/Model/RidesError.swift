@@ -46,12 +46,12 @@ import ObjectMapper
     override init() {
     }
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension RidesError: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         code    <- map["code"]
         status  <- map["status"]
         errors  <- map["errors"]
@@ -79,16 +79,17 @@ extension RidesError: UberModel {
 /// Client error 4xx.
 @objc(UBSDKRidesClientError) open class RidesClientError: RidesError {
 
-    public required init?(_ map: Map) {
-        super.init(map)
+    public required init?(map: Map) {
+        super.init(map:map)
     }
+
 }
 
 /// Server error 5xx.
 @objc(UBSDKRidesServerError) open class RidesServerError: RidesError {
     
-    public required init?(_ map: Map) {
-        super.init(map)
+    public required init?(map: Map) {
+        super.init(map: map)
     }
 }
 
@@ -99,9 +100,12 @@ extension RidesError: UberModel {
         super.init()
     }
     
-    public required init?(_ map: Map) {
-        super.init(map)
+
+    public required init?(map: Map) {
+        super.init(map: map)
     }
+    
+
 }
 
 // MARK: RidesAuthenticationError

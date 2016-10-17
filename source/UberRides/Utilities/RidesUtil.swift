@@ -109,14 +109,14 @@ class OAuthUtil {
         if let params = components.allItems() {
             for param in params {
                 if param.name == "error" {
-                    guard let rawValue = param.value, let error = RidesAuthenticationErrorFactory.createRidesAuthenticationError(rawValue: rawValue) else {
-                        return RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .invalidRequest)
+                    guard let rawValue = param.value, let error = RidesAuthenticationErrorFactory.createRidesAuthenticationError(rawValue) else {
+                        return RidesAuthenticationErrorFactory.errorForType(.invalidRequest)
                     }
                     return error
                 }
             }
         }
-        return RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: .invalidRequest)
+        return RidesAuthenticationErrorFactory.errorForType(.invalidRequest)
     }
     
     static func parseRideWidgetErrorFromURL(_ url: URL) -> NSError {

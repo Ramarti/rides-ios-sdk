@@ -449,7 +449,7 @@ import CoreLocation
                 downloadGroup.leave()
             }
             
-            client.fetchPriceEstimates(pickupLocation: pickupLocation, dropoffLocation: dropoffLocation, completion:priceEstimatesCompletion )
+            client.fetchPriceEstimates(pickupLocation, dropoffLocation: dropoffLocation, completion:priceEstimatesCompletion )
         }
         
         client.fetchTimeEstimates(pickupLocation: pickupLocation, productID:productID, completion: timeEstimatesCompletion)

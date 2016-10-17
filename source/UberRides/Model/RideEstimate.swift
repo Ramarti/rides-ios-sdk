@@ -40,12 +40,12 @@ import ObjectMapper
     /// The estimated time of vehicle arrival in minutes. -1 if there are no cars available.
     open fileprivate(set) var pickupEstimate: Int = -1
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension RideEstimate: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         priceEstimate    <- map["price"]
         distanceEstimate <- map["trip"]
         pickupEstimate   <- map["pickup_estimate"]

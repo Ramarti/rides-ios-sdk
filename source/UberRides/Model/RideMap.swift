@@ -37,12 +37,12 @@ import ObjectMapper
     /// Unique identifier representing a ride request.
     open fileprivate(set) var requestID: String?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension RideMap: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         path      <- map["href"]
         requestID <- map["request_id"]
     }

@@ -43,12 +43,12 @@ import ObjectMapper
     /// The driver's star rating out of 5 stars.
     open fileprivate(set) var rating: Double = 0.0
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension Driver: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         name        <- map["name"]
         pictureURL  <- map["picture_url"]
         phoneNumber <- map["phone_number"]

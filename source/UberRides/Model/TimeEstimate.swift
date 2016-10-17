@@ -31,12 +31,12 @@ import ObjectMapper
 */
 struct TimeEstimates {
     var list: [TimeEstimate]?
-    init?(_ map: Map) {
+    init?(map: Map) {
     }
 }
 
 extension TimeEstimates: UberModel {
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         list <- map["times"]
     }
 }
@@ -56,12 +56,12 @@ extension TimeEstimates: UberModel {
     /// ETA for the product (in seconds).
     open fileprivate(set) var estimate: Int = 0
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension TimeEstimate: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         productID <- map["product_id"]
         name      <- map["display_name"]
         estimate  <- map["estimate"]

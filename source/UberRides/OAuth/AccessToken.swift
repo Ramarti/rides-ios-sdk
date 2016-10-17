@@ -79,7 +79,7 @@ import ObjectMapper
      
      - returns: An initialized AccessToken, or nil if someting went wrong
      */
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
     
     /**
@@ -100,7 +100,7 @@ import ObjectMapper
      
      - parameter map: The Map to use for populatng this AccessToken.
      */
-    open func mapping(_ map: Map) {
+    open func mapping(map: Map) {
         tokenString         <- map["access_token"]
         refreshToken        <- map["refresh_token"]
         expirationDate <- (map["expiration_date"], DateTransform())

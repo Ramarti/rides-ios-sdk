@@ -40,12 +40,12 @@ import ObjectMapper
     /// Expected activity duration (in seconds).
     open fileprivate(set) var duration: Int = 0
     
-    public required init?(_ map: Map) {
+    public required init?(map p: Map) {
     }
 }
 
 extension DistanceEstimate: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         distance     <- map["distance_estimate"]
         distanceUnit <- map["distance_unit"]
         duration     <- map["duration_estimate"]

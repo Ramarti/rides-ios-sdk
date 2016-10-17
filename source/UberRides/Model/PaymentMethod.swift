@@ -33,12 +33,12 @@ struct PaymentMethods {
     var lastUsed: String?
     var list: [PaymentMethod]?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
     }
 }
 
 extension PaymentMethods: UberModel {
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         lastUsed <- map["last_used"]
         list     <- map["payment_methods"]
     }
@@ -57,12 +57,12 @@ extension PaymentMethods: UberModel {
     /// The type of the payment method. See https://developer.uber.com/docs/v1-payment-methods.
     open fileprivate(set) var type: String?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension PaymentMethod: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         paymentDescription <- map["description"]
         methodID           <- map["payment_method_id"]
         type               <- map["type"]

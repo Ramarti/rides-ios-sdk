@@ -43,12 +43,12 @@ import ObjectMapper
     /// The longitude of the location.
     open fileprivate(set) var longitude: Double = 0
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension RideRequestLocation: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         bearing   <- map["bearing"]
         eta       <- map["eta"]
         latitude  <- map["latitude"]

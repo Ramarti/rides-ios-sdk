@@ -31,12 +31,12 @@ import ObjectMapper
 */
 struct PriceEstimates {
     var list: [PriceEstimate]?
-    init?(_ map: Map) {
+    init?(map: Map) {
     }
 }
 
 extension PriceEstimates: UberModel {
-    mutating func mapping(_ map: Map) {
+    mutating func mapping(map: Map) {
         list <- map["prices"]
     }
 }
@@ -81,12 +81,12 @@ extension PriceEstimates: UberModel {
     /// Expected surge multiplier (active if surge is greater than 1).
     open fileprivate(set) var surgeMultiplier: Double = 1.0
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension PriceEstimate: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         currencyCode         <- map["currency_code"]
         distance             <- map["distance"]
         duration             <- map["duration"]

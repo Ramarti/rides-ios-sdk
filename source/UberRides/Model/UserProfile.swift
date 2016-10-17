@@ -48,12 +48,12 @@ import ObjectMapper
     /// Unique identifier of the Uber user.
     open fileprivate(set) var UUID: String?
     
-    public required init?(_ map: Map) {
+    public required init?(map: Map) {
     }
 }
 
 extension UserProfile: UberModel {
-    public func mapping(_ map: Map) {
+    public func mapping(map: Map) {
         firstName   <- map["first_name"]
         lastName    <- map["last_name"]
         email       <- map["email"]
