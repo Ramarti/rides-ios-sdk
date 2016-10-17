@@ -40,7 +40,7 @@ import ObjectMapper
     /// Expected activity duration (in seconds).
     open fileprivate(set) var duration: Int = 0
     
-    public required init?(map p: Map) {
+    public required init?(map: Map) {
     }
 }
 
