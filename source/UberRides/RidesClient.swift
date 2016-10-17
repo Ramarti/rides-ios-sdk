@@ -283,7 +283,7 @@ import CoreLocation
      - parameter dropoffLocation:  coordinates of dropoff location
      - parameter completion:       completion handler for returned estimates.
      */
-    @objc open func fetchPriceEstimates(pickupLocation: CLLocation, dropoffLocation: CLLocation, completion:@escaping (_ priceEstimates: [PriceEstimate], _ response: Response) -> Void) {
+    @objc open func fetchPriceEstimates(_ pickupLocation: CLLocation, dropoffLocation: CLLocation, completion:@escaping (_ priceEstimates: [PriceEstimate], _ response: Response) -> Void) {
         let endpoint = Estimates.price(startLocation: pickupLocation,
                                        endLocation: dropoffLocation)
         apiCall(endpoint, completion: { response in
@@ -306,7 +306,7 @@ import CoreLocation
      - parameter limit:      number of items to retrieve. Default is 5, maximum is 50.
      - parameter completion: completion handler for returned user trip history.
      */
-    @objc open func fetchTripHistory(offset: Int = 0, limit: Int = 5, completion:@escaping (_ tripHistory: TripHistory?, _ response: Response) -> Void) {
+    @objc open func fetchTripHistory(_ offset: Int = 0, limit: Int = 5, completion:@escaping (_ tripHistory: TripHistory?, _ response: Response) -> Void) {
         let endpoint = History.get(offset: offset, limit: limit)
         apiCall(endpoint, completion: { response in
             var history: TripHistory?

@@ -294,15 +294,15 @@ class RidesAuthenticationErrorFactory : NSObject {
      
      - returns: An initialized RidesAuthenticationError
      */
-    static func errorForType(ridesAuthenticationErrorType : RidesAuthenticationErrorType) -> NSError {
+    static func errorForType(_ ridesAuthenticationErrorType : RidesAuthenticationErrorType) -> NSError {
         return NSError(domain: errorDomain, code: ridesAuthenticationErrorType.rawValue, userInfo: [NSLocalizedDescriptionKey : ridesAuthenticationErrorType.toLocalizedDescription()])
     }
     
-    static func createRidesAuthenticationError(rawValue: String) -> NSError? {
+    static func createRidesAuthenticationError(_ rawValue: String) -> NSError? {
         guard let ridesAuthenticationErrorType = ridesAuthenticationErrorType(rawValue) else {
             return nil
         }
-        return RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType: ridesAuthenticationErrorType)
+        return RidesAuthenticationErrorFactory.errorForType(ridesAuthenticationErrorType)
     }
     
     static func ridesAuthenticationErrorType(_ rawValue: String) -> RidesAuthenticationErrorType? {

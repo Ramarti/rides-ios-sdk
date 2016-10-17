@@ -268,7 +268,7 @@ enum OAuth: UberAPI {
         let signupParameters = [ "redirect_to_login" : true ]
         do {
             let json = try JSONSerialization.data(withJSONObject: signupParameters, options: JSONSerialization.WritingOptions(rawValue: 0))
-            return json.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength76Characters)
+            return json.base64EncodedString(options: Data.Base64EncodingOptions.lineLength76Characters)
         } catch _ as NSError {
             return ""
         }
